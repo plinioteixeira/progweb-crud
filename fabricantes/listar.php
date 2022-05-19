@@ -35,16 +35,19 @@ $listaDeFabricantes = lerFabricantes($conexao);
                 
         <tbody>
 
-<?php foreach ($listaDeFabricantes as $fabricante) { ?>
+<?php
+$contador = 1;
+foreach ($listaDeFabricantes as $fabricante) { ?>
         <tr>
             <td><?=$fabricante["id"]?></td>
-            <td><?=$fabricante["nome"]?></td>
+            <td><?=$contador. ":"  .$fabricante["nome"]?></td>
             <td>
-                <a href="atualizar.php">Atualizar</a>
-                 - <a href="excluir.php">Excluir</a>
+                <a href="atualizar.php?id=<?=$fabricante["id"]?>">Atualizar</a>
+                 - <a href="excluir.php?id=<?=$fabricante["id"]?>">Excluir</a>
             </td>
         </tr>
 <?php
+$contador++;
  } 
  require "../includes/desconecta.php"; 
 ?>
