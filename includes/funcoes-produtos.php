@@ -30,7 +30,7 @@ function inserirProduto($conexao, $nome, $preco, $quantidade, $descricao, $fabri
 
 function lerUmProduto($conexao, $id){
     // Montagem do comando SQL com o parâmetro id
-    $sql = "SELECT id, nome FROM fabricantes WHERE id = $id";
+    $sql = "SELECT id, nome, preco, quantidade, descricao, fabricante_id FROM produtos WHERE id = $id";
 
     // Execução do comando e armazenamento do resultado 
     $resultado = mysqli_query($conexao, $sql)
