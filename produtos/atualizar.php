@@ -4,9 +4,20 @@ require "../includes/funcoes-produtos.php";
 $listaDeFabricantes = lerFabricantes($conexao);
 
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-    $produto = lerUmProduto($conexao, $id)
+    $produto = lerUmProduto($conexao, $id);
 
+ if (isset($_POST['atualizar'])) {
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+    $preco = filter_input(INPUT_POST, 'preco', 
+    FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $quantidade = filter_input(INPUT_POST, 'quantidade', FILTER_SANITIZE_NUMBER_INT);
+    $descricao = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_SPECIAL_CHARS);
+    $fabId = filter_input(INPUT_POST, 'fabricante', FILTER_SANITIZE_NUMBER_INT);
 
+    // Chamada da função que irá inserir os dados do novo produto
+    atualizarProduto($conexao, $id, $nome, $preco, $descricao, $quantidade, $fabId);
+    header("location:listar.php"); // redirecionamento para listar.php
+ }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

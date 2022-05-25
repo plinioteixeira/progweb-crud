@@ -40,8 +40,10 @@ function lerUmProduto($conexao, $id){
      return mysqli_fetch_assoc($resultado);
 }
 
-function atualizarProduto($conexao, $id, $nome){
-    $sql ="UPDATE fabricantes SET nome = '$nome' WHERE id = $id";
+function atualizarProduto($conexao, $id, $nome, $preco, $descricao, $quantidade, $fabId){
+    $sql ="UPDATE produtos SET nome = '$nome', preco = $preco, quantidade = $quantidade, descricao = '$descricao', fabricante_id = $fabId
+    
+    WHERE id = $id";
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
 
@@ -50,7 +52,9 @@ function excluirProduto($conexao, $id,){
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
 
-
+function formataMoeda($valor){
+    return "R$ ".number_format($valor, 2, ",", ".");
+}
 
 
 
