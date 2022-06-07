@@ -68,7 +68,7 @@ $contador = 1;
 foreach ($listaDeFabricantes as $fabricante) { ?>
         <tr>
             <td><?=$fabricante["id"]?></td>
-            <td><?=$contador. ":"  .$fabricante["nome"]?></td>
+            <td><?=$contador.  ": "  .$fabricante["nome"]?></td>
             <td>
                 <a class="btn btn-warning" href="atualizar.php?id=<?=$fabricante["id"]?>"><span class="alert-link">Atualizar</span></a>
                  - <a class="btn btn-danger" href="excluir.php?id=<?=$fabricante["id"]?>"><span class="alert-link">Excluir</span></a>
